@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 
-function BarChart() {
+function BarChart(props) {
   useEffect(() => {
     drawChart();
     window.addEventListener("resize", redraw);
@@ -24,11 +24,11 @@ function BarChart() {
       { year: "2004", value: 500 }
     ];
 
-    const svg = d3.select("svg"),
+    const svg = d3.select("#bar-chart").select("svg"),
       innerW = window.innerWidth,
-      margin = 200,
+      margin = 150,
       width = innerW - margin,
-      height = 500 - margin;
+      height = 400 - margin;
 
     const defs = svg.append("defs");
 
@@ -139,7 +139,7 @@ function BarChart() {
       .style("fill", "url(#linear-gradient)");
   };
 
-  return <svg width="600" height="500" />;
+  return <svg width={props.width} height={props.height} />;
 }
 
 export default BarChart;

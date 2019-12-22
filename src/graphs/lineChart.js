@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 
-function LineChart() {
+function LineChart(props) {
   useEffect(() => {
     drawChart();
     window.addEventListener("resize", redraw);
@@ -36,10 +36,13 @@ function LineChart() {
     const width = svgWidth - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
 
-    const svg = d3
-      .select("svg")
-      .attr("width", svgWidth)
-      .attr("height", svgHeight);
+    const svg = d3.select("#line-chart").select("svg"),
+      // .attr("width", svgWidth)
+      // .attr("height", svgHeight);
+      innerW = window.innerWidth,
+      marginX = 150,
+      widthX = innerW - marginX,
+      heightX = 400 - marginX;
 
     const g = svg
       .append("g")
@@ -101,7 +104,7 @@ function LineChart() {
       .attr("stroke-dashoffset", 0);
   };
 
-  return <svg />;
+  return <svg width={props.width} height={props.height} />;
 }
 
 export default LineChart;

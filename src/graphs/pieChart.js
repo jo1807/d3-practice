@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 
-function PieChart() {
+function PieChart(props) {
   useEffect(() => {
     drawChart();
     window.addEventListener("resize", redraw);
@@ -31,6 +31,7 @@ function PieChart() {
     const total = data.reduce((acc, cur) => acc + cur.value, 0);
 
     const chart = d3
+      .select("#pie-chart")
       .select("svg")
       .style("width", "100%")
       .attr("height", 1000)
@@ -110,7 +111,7 @@ function PieChart() {
       );
   };
 
-  return <svg />;
+  return <svg width={props.width} height={props.height} />;
 }
 
 export default PieChart;
