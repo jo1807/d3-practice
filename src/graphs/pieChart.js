@@ -11,7 +11,9 @@ function PieChart(props) {
   });
 
   const redraw = () => {
-    d3.selectAll("g > *").remove();
+    d3.select("#pie-chart")
+      .selectAll("g > *")
+      .remove();
     drawChart();
   };
 
@@ -111,7 +113,11 @@ function PieChart(props) {
       );
   };
 
-  return <svg width={props.width} height={props.height} />;
+  return (
+    <div id="pie-chart">
+      <svg width={props.width} height={props.height} />
+    </div>
+  );
 }
 
 export default PieChart;

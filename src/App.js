@@ -26,21 +26,14 @@ const ChartWrapper = styled.div`
 
 function App() {
   const width = window.innerWidth;
-  const margin = 10;
-  const chartWidth = width / 3;
-  console.log(window.innerWidth, chartWidth);
 
   return (
     <>
-      <div id="line-chart">
-        <LineChart height={"400px"} width={width - margin} />
-      </div>
-      <div id="bar-chart">
-        <BarChart height={"400px"} width={width - margin} />
-      </div>
-      <div id="pie-chart">
-        <PieChart height={"400px"} width={width - margin} />
-      </div>
+      <LineChart height={"400px"} width={width} />
+
+      <BarChart height={"400px"} width={width} />
+
+      <PieChart height={"400px"} width={width} />
     </>
   );
 }

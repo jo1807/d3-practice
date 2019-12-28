@@ -11,7 +11,9 @@ function LineChart(props) {
   });
 
   const redraw = () => {
-    d3.selectAll("g > *").remove();
+    d3.select("#line-chart")
+      .selectAll("g > *")
+      .remove();
     drawChart();
   };
 
@@ -36,13 +38,7 @@ function LineChart(props) {
     const width = svgWidth - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
 
-    const svg = d3.select("#line-chart").select("svg"),
-      // .attr("width", svgWidth)
-      // .attr("height", svgHeight);
-      innerW = window.innerWidth,
-      marginX = 150,
-      widthX = innerW - marginX,
-      heightX = 400 - marginX;
+    const svg = d3.select("#line-chart").select("svg");
 
     const g = svg
       .append("g")
@@ -104,7 +100,11 @@ function LineChart(props) {
       .attr("stroke-dashoffset", 0);
   };
 
-  return <svg width={props.width} height={props.height} />;
+  return (
+    <div id="line-chart">
+      <svg width={props.width} height={props.height} />
+    </div>
+  );
 }
 
 export default LineChart;

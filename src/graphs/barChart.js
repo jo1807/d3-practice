@@ -11,7 +11,9 @@ function BarChart(props) {
   });
 
   const redraw = () => {
-    d3.selectAll("g > *").remove();
+    d3.select("#bar-chart")
+      .selectAll("g > *")
+      .remove();
     drawChart();
   };
 
@@ -29,7 +31,6 @@ function BarChart(props) {
       margin = 150,
       width = innerW - margin,
       height = 400 - margin;
-
     const defs = svg.append("defs");
 
     let linearGradient = defs
@@ -135,11 +136,14 @@ function BarChart(props) {
       .attr("height", function(d) {
         return height - yScale(d.value);
       })
-      //.attr("fill", "steelblue")
       .style("fill", "url(#linear-gradient)");
   };
 
-  return <svg width={props.width} height={props.height} />;
+  return (
+    <div id="bar-chart">
+      <svg width={props.width} height={400} />
+    </div>
+  );
 }
 
 export default BarChart;
